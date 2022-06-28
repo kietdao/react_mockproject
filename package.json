@@ -10,6 +10,8 @@
     "antd": "4.21.4",
     "axios": "0.27.2",
     "eslint": "8.18.0",
+    "i18next": "21.8.11",
+    "i18next-browser-languagedetector": "6.1.4",
     "jest": "28.1.1",
     "node-sass": "7.0.1",
     "prettier": "2.7.1",
