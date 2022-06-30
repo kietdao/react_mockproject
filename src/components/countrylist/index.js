@@ -23,22 +23,35 @@ export default function CountryList() {
       title: 'Confirmed',
       dataIndex: 'confirmed',
       key: 'confirmed',
+      sorter: {
+        compare: (a, b) => a.confirmed - b.confirmed,
+      },
     },
     {
       title: 'Recovered',
       dataIndex: 'recovered',
       key: 'recovered',
+      sorter: {
+        compare: (a, b) => a.recovered - b.recovered,
+      },
     },
     {
       title: 'Deaths',
       dataIndex: 'deaths',
       key: 'deaths',
+      sorter: {
+        compare: (a, b) => a.deaths - b.deaths,
+      },
     },
   ];
   return (
     <div className='country_list'>
       <h2>Countries Effected</h2>
-      <Table rowKey={record => record.id} columns={columns} dataSource={data} showSizeChanger={false} />
+      <Table rowKey={record => record.id} columns={columns} dataSource={data} pagination={
+        {
+          showSizeChanger: false
+        }
+      } />
     </div>
   )
 }
