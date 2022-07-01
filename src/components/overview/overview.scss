@@ -1,9 +1,27 @@
 .overview {
-    border: 1px solid #333;
-    box-shadow: 1px 1px 1px;
+    box-shadow: 0px 0px 3px;
+    margin: 15px 0;
     h2 {
         font-size: 36px;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid #ccc;
+    }
+    .red {
+        color: #e53e33;
+        .overview_title {
+            color: #e53e33;
+        }
+    }
+    .green {
+        color: #38a16e;
+        .overview_title {
+            color: #38a16e;
+        }
+    }
+    .gray {
+        color: #71809b;
+        .overview_title {
+            color: #71809b;
+        }
     }
     .overview_item {
         padding: 30px;
@@ -15,5 +33,6 @@
             font-size: 32px;
             font-weight: bold;
         }
+        
     }
 }

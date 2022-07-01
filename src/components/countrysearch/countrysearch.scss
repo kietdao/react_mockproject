@@ -1,0 +1,17 @@
+.search_country {
+    &_options {
+        a {
+            display: flex;
+            align-items: center;
+        }
+        .country_flag {
+            width: 50px;
+            max-width: 50px;
+            height: auto;
+            margin-right: 8px;
+        }
+        .country_name {
+
+        }
+    }
+}

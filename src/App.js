@@ -7,6 +7,7 @@ import Home from './pages/home'
 import News from './pages/news'
 import Login from './pages/login'
 import Register from './pages/register'
+import DetailCountry from './pages/detailcountry';
 import { setCountrylist, setAllData } from './features/countries/countriesSlice';
 import 'antd/dist/antd.css'
 import './App.scss';
@@ -65,6 +66,7 @@ function App() {
         <Route exact path='/news' element={<News />}/>
         <Route exact path='/login' element={<Login />}/>
         <Route exact path='/register' element={<Register />}/>
+        <Route path='/countries/:countryname' element={<DetailCountry />}/>
       </Routes>
     </div>
   );
