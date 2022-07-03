@@ -1,0 +1,13 @@
+.line_chart {
+    background-color: #fff;
+    box-shadow: 2px 2px 10px #ccc;
+    .recharts-xAxis {
+        .recharts-cartesian-axis-ticks {
+            .recharts-cartesian-axis-tick {
+                .recharts-cartesian-axis-tick-value {
+                    transform: translate(0, 0) rotate(-45deg, 460.199deg, 404deg);
+                }
+            }
+        }
+    }
+}

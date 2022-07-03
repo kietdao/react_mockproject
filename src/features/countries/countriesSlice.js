@@ -4,6 +4,7 @@ export const countriesSlice = createSlice({
     name: 'countries',
     initialState: {
         allData: null,
+        chartData: null,
         countryList: null
     },
     reducers: {
@@ -12,10 +13,13 @@ export const countriesSlice = createSlice({
         },
         setAllData: (state, action) => {
             state.allData = action.payload
+        },
+        setChartData: (state, action) => {
+            state.chartData = action.payload
         }
     }
 })
 
-export const { setCountrylist,  setAllData } = countriesSlice.actions
+export const { setCountrylist,  setAllData, setChartData } = countriesSlice.actions
 
 export default countriesSlice.reducer

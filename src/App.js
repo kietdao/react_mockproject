@@ -8,13 +8,12 @@ import News from './pages/news'
 import Login from './pages/login'
 import Register from './pages/register'
 import DetailCountry from './pages/detailcountry';
-import { setCountrylist, setAllData } from './features/countries/countriesSlice';
+import { setCountrylist, setAllData, setChartData } from './features/countries/countriesSlice';
 import 'antd/dist/antd.css'
 import './App.scss';
 
 function App() {
   const dispatch = useDispatch()
-
   useEffect(() => {
     async function getTotalData() {
       try {
@@ -30,6 +29,18 @@ function App() {
       }
     }
     getTotalData()
+  }, [])
+
+  useEffect(() => {
+    async function getChartData() {
+      try {
+        const chartData = await axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
+        dispatch(setChartData(chartData))
+      } catch(err) {
+        console.log(err)
+      }
+    }
+    getChartData()
   }, [])
 
   useEffect(() => {
