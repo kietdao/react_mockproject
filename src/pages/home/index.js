@@ -16,11 +16,11 @@ export default function Home() {
             <Col span={12}> 
               <CountrySearch />
               <OverView />
+              <DataChart />
             </Col>
         </Row>
         <Row gutter={16}>
-            <Col span={12}><DataChart /></Col>
-            <Col span={12}><WorldMap /></Col>  
+            <Col span={24}><WorldMap /></Col>
         </Row>
       </div>
     </div>

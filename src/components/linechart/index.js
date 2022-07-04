@@ -22,7 +22,6 @@ export default function DataChart() {
     let customizedDate = `${dateForCustomize.getDate()}-${dateForCustomize.getMonth()+1}-${dateForCustomize.getFullYear().toString().substr(-2)}`
     return customizedDate
   })
-  console.log(dateCustomedArray)
   const dataForChart = dateCustomedArray && dateCustomedArray.map((date, index) => {
     return {
       date,
@@ -37,7 +36,7 @@ export default function DataChart() {
       <ResponsiveContainer className="chart" height={300}>
         <LineChart 
          width={`100%`} 
-         height={600}
+         height={800}
          data={dataForChart ? dataForChart : []}
          margin={{top: 5, right: 30, left: 20, bottom: 5}}
         >

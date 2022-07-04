@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@highcharts/map-collection": "^2.0.1",
     "@reduxjs/toolkit": "1.8.2",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.3.0",
@@ -10,6 +11,8 @@
     "antd": "4.21.4",
     "axios": "0.27.2",
     "eslint": "8.18.0",
+    "highcharts": "10.1.0",
+    "highcharts-react-official": "3.1.0",
     "i18next": "21.8.11",
     "i18next-browser-languagedetector": "6.1.4",
     "jest": "28.1.1",
