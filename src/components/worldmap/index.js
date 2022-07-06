@@ -6,34 +6,9 @@ import map from "@highcharts/map-collection/custom/world.geo.json";
 HighchartsMap(Highcharts);
 export default function WorldMap() {
   const data = useSelector(state => state.countries?.countryList)
-  const dataEnableFormat = JSON.parse(JSON.stringify(data))
-  const formattedData = dataEnableFormat.map(country => {
-    if(country.countryName === 'USA') {
-      country.countryName = 'United States of America'
-    } else if(country.countryName === 'UK') {
-      country.countryName = 'United Kingdom'
-    } else if(country.countryName === 'Libyan Arab Jamahiriya') {
-      country.countryName = 'Libya'
-    } else if(country.countryName === 'Congo') {
-      country.countryName = 'Republic of Congo'
-    } else if(country.countryName === `Côte d'Ivoire`) {
-      country.countryName = 'Ivory Coast'
-    } else if(country.countryName === 'DRC') {
-      country.countryName = 'Democratic Republic of the Congo'
-    } else if(country.countryName === 'Tanzania') {
-      country.countryName = 'United Republic of Tanzania'
-    } else if(country.countryName === 'N. Korea') {
-      country.countryName = 'North Korea'
-    } else if(country.countryName === 'S. Korea') {
-      country.countryName = 'South Korea'
-    } else if(country.countryName === `Lao People's Democratic Republic`) {
-      country.countryName = 'Laos'
-    }
-    return country
-  })
+  console.log(data)
   const options = {
     chart: {
-      map: map,
       borderWidth: 1,
     },
     title: {
@@ -43,7 +18,7 @@ export default function WorldMap() {
       text: "Cofirmed Cases"
     },
     legend: {
-      enabled: false
+      enabled: true
     },
     mapNavigation: {
       enabled: true,
@@ -62,20 +37,47 @@ export default function WorldMap() {
     },
     series: [
       {
-        name: "Countries",
-        color: "#E0E0E",
-        enableMouseTracking: false,
+        name: 'Countries',
+        color: '#ccc',
+      }
+      ,
+      {
+        type: "map",
+        name: "Death Cases",
+        color: '#71809b',
+        data: data,
+        mapData: map,
+        showInLegend: true,
+        joinBy: ['iso-a3','iso3'],
+        tooltip: {
+          pointFormat: `{point.properties.name}: {point.deaths} people`
+        }
+      },
+      {
+        type: "map",
+        name: "Recovered Cases",
+        color: '#38a16e',
+        data: data,
+        mapData: map,
+        showInLegend: true,
+        joinBy: ['iso-a3','iso3'],
+        tooltip: {
+          pointFormat: `{point.properties.name}: {point.recovered} people`
+        }
       },
       {
         type: "map",
         name: "Confirmed Cases",
-        data: formattedData,
-        joinBy: ['name','countryName'],
+        color: '#e53e33',
+        data: data,
+        mapData: map,
+        showInLegend: true,
+        joinBy: ['iso-a3','iso3'],
         tooltip: {
           pointFormat: `{point.properties.name}: {point.confirmed} people`
         }
       }
-    ]
+    ],
   };
   return (
     <div className='world_map'>

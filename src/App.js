@@ -50,6 +50,7 @@ function App() {
         const countriesList = countriesData.data.map((country, index) => {
           return {
             id: country.countryInfo._id,
+            iso3: country.countryInfo.iso3,
             flag: country.countryInfo?.flag,
             countryName: country?.country,
             confirmed: country?.cases,
