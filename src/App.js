@@ -9,6 +9,7 @@ import Login from './pages/login'
 import Register from './pages/register'
 import DetailCountry from './pages/detailcountry';
 import { setCountrylist, setAllData, setChartData } from './features/countries/countriesSlice';
+import { setNewsList } from './features/news/newsSlice';
 import 'antd/dist/antd.css'
 import './App.scss';
 

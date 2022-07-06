@@ -3,7 +3,7 @@ import countriesSlice from "../features/countries/countriesSlice";
 
 export default configureStore({
     reducer: {
-        countries: countriesSlice
+        countries: countriesSlice,
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

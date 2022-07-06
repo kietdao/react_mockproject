@@ -6,7 +6,6 @@ import map from "@highcharts/map-collection/custom/world.geo.json";
 HighchartsMap(Highcharts);
 export default function WorldMap() {
   const data = useSelector(state => state.countries?.countryList)
-  console.log(data)
   const options = {
     chart: {
       borderWidth: 1,
@@ -23,7 +22,7 @@ export default function WorldMap() {
     mapNavigation: {
       enabled: true,
       buttonOptions: {
-        verticalAlign: "bottom"
+        verticalAlign: "top"
       }
     },
     plotOptions: {
