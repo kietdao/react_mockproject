@@ -9,6 +9,7 @@ export default function NewsList(props) {
           return (
             <div className='news_item' key={uuidv4()}>
               <Card
+                loading={news?.description ? false : true}
                 hoverable
                 style={{
                   width: 240,

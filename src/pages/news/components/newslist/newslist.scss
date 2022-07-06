@@ -6,7 +6,19 @@
         justify-content: space-around;
         flex-wrap: wrap;
         .news_item {
-    
+            max-height: 500px;
+            .ant-card {
+                max-height: 300px;
+                overflow: hidden;
+                margin-bottom: 16px;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                .ant-card-meta-description {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+            }
         }
     }
 }

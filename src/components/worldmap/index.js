@@ -14,7 +14,7 @@ export default function WorldMap() {
       text: "Covid-19 World Map"
     },
     subtitle: {
-      text: "Cofirmed Cases"
+      text: "Covid-19 Cases"
     },
     legend: {
       enabled: true

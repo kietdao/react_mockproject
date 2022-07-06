@@ -15,7 +15,7 @@ export default function News() {
       try {
         setIsLoading(true)
         const res = await axios.get(`https://corona--tracker.herokuapp.com/newslist?_page=${page}&_limit=20`)
-        setNewsList(res.data)
+        setNewsList([...newsList,...res.data])
         setErrMsg('')
       } catch(err) {
         setErrMsg('Get error while loading data. Please try again')
@@ -30,7 +30,7 @@ export default function News() {
   }
   return (
     <div className='news_section'>
-      <NewsList newsList={newsList}/>
+      <NewsList newsList={newsList} />
       {errmsg && <>{errmsg}</>}
       {isLoading ? <Spin tip='Loading...'/> : (
         <div className='loadmore_btn'>

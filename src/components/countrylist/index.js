@@ -47,7 +47,7 @@ export default function CountryList() {
   return (
     <div className='country_list'>
       <h2>Countries Effected</h2>
-      <Table rowKey={record => record.id} columns={columns} dataSource={data} pagination={
+      <Table loading={data ? false : true} rowKey={record => record.id} columns={columns} dataSource={data} pagination={
         {
           showSizeChanger: false
         }
