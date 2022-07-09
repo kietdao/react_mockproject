@@ -9,10 +9,11 @@ import Login from './pages/login'
 import Register from './pages/register'
 import DetailCountry from './pages/detailcountry';
 import { setCountrylist, setAllData, setChartData } from './features/countries/countriesSlice';
-import { setNewsList } from './features/news/newsSlice';
+import AuthRoute from './components/authroute'
+import PrivateRoute from './components/privateroute'
 import 'antd/dist/antd.css'
 import './App.scss';
-
+localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -31,7 +32,6 @@ function App() {
     }
     getTotalData()
   }, [])
-
   useEffect(() => {
     async function getChartData() {
       try {
@@ -43,7 +43,6 @@ function App() {
     }
     getChartData()
   }, [])
-
   useEffect(() => {
     async function getCountriesList() {
       try {
@@ -66,19 +65,29 @@ function App() {
     }
     getCountriesList()
   }, [])
-
   const getCountriesListData = () => {
     return axios.get('https://disease.sh/v3/covid-19/countries')
   }
-
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route exact path='/' element={<Home />}/>
+        <Route exact path='/' element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }/>
         <Route exact path='/news' element={<News />}/>
-        <Route exact path='/login' element={<Login />}/>
-        <Route exact path='/register' element={<Register />}/>
+        <Route exact path='/login' element={
+          <AuthRoute>
+            <Login />
+          </AuthRoute>
+        }/>
+        <Route exact path='/register' element={
+          <AuthRoute>
+            <Register />
+          </AuthRoute>
+        }/>
         <Route path='/countries/:countryname' element={<DetailCountry />}/>
       </Routes>
     </div>

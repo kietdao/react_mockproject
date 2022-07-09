@@ -8,16 +8,18 @@ export default function NewsList(props) {
         {props?.newsList.map(news => {
           return (
             <div className='news_item' key={uuidv4()}>
-              <Card
-                loading={news?.description ? false : true}
-                hoverable
-                style={{
-                  width: 240,
-                }}
-                cover={<img alt="example" src={news?.urlToImage} />}
-              >
-                <Meta title={news?.title} description={news?.description} />
-              </Card>
+              <a href={news.url} target='_blank'>
+                <Card
+                  loading={news?.description ? false : true}
+                  hoverable
+                  style={{
+                    width: 240,
+                  }}
+                  cover={<img alt="example" src={news?.urlToImage} />}
+                >
+                  <Meta title={news?.title} description={news?.description} />
+                </Card>
+              </a>
             </div>
           )
         })}

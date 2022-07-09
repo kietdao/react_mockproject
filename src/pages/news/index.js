@@ -30,6 +30,7 @@ export default function News() {
   }
   return (
     <div className='news_section'>
+      <h2>Summary Of News About Covid-19</h2>
       <NewsList newsList={newsList} />
       {errmsg && <>{errmsg}</>}
       {isLoading ? <Spin tip='Loading...'/> : (
