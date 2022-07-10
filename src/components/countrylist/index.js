@@ -12,8 +12,8 @@ export default function CountryList() {
     {
       title: 'Country',
       key: 'country',
-      render: ({flag, countryName}) => (
-        <Link to={`countries/${countryName}`}>
+      render: ({flag, countryName, iso3}) => (
+        <Link to={`countries/${iso3}`}>
           <img src={flag} className='country_flag'/>
           <span className='country_name'></span>{countryName}
         </Link>
