@@ -8,6 +8,7 @@ import './countrysearch.scss'
 
 export default function CountrySearch() {
   const [options, setOptions] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const countriesData = useSelector(state => state.countries?.countryList)
   const data = JSON.parse(JSON.stringify(countriesData))
   const renderItem = (flag, countryName, key, iso3) => ({
@@ -21,20 +22,27 @@ export default function CountrySearch() {
       </div>
     )
   });
-  const countryOptions = data && data.map(option => {
+  const countryOptions = options.length === 0 ? (data && data.map(option => {
     return renderItem(option.flag, option.countryName, option.id, option.iso3)
-  })
+  })) : (options && options.map(option => {
+    return renderItem(option.flag, option.countryName, option.id, option.iso3)
+  }))
   const searchResult = (inputSearch) => {
-    const result = data && data.filter(option => {
-      return inputSearch?.charAt(0).toUpperCase() + inputSearch?.slice(1) === option.countryName
+    let inputFormatted = inputSearch?.charAt(0).toUpperCase() + inputSearch?.slice(1)
+    const result = data && data.filter(item => {
+      return item?.countryName.includes(inputFormatted)
     })
-    return result
+    return result !== null ? result : []
   }
   const handleSearch = useCallback(_debounce((value) => {
-    const result = searchResult(value)
-    result && setOptions([...result])
-    console.log(options)
-  }, 2000), []);
+    if(value === '') {
+      setIsLoading(false)
+    } else {
+      setIsLoading(true)
+    }
+    let result = searchResult(value)
+    setOptions([...result])
+  }, 2000),[options]);
   const onSelect = (data) => {
     console.log(data);
   };
@@ -51,6 +59,7 @@ export default function CountrySearch() {
               onSelect={onSelect}
               onSearch={handleSearch}
               placeholder="Enter Country Name Here..."
+              loading={isLoading ? true : false}
             />  
           </Col>
         </Row>
