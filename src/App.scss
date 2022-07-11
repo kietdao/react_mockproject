@@ -1,3 +1,20 @@
 .App {
-  text-align: center;
+  text-align: center
 }
+// Break-points
+@import './Responsive';
+
+// Pages
+@import './pages/home/home';
+@import './pages/login/login';
+@import './pages/news/components/newslist/newslist';
+@import './pages/detailcountry/detailcountry';
+@import './pages/register/register';
+
+// Components
+@import './components/header/header';
+@import './components/countrylist/countrylist';
+@import './components/countrysearch/countrysearch';
+@import './components/overview/overview';
+@import './components/linechart/linechart';
+@import './components/worldmap/worldmap';

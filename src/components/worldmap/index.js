@@ -9,6 +9,7 @@ export default function WorldMap() {
   const options = {
     chart: {
       borderWidth: 1,
+      height: (1 / 4 * 100) + '%'
     },
     title: {
       text: "Covid-19 World Map"
@@ -36,6 +37,8 @@ export default function WorldMap() {
     },
     series: [
       {
+        type: "map",
+        mapData: map,
         name: 'Countries',
         color: '#ccc',
       }

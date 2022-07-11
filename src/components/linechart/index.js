@@ -1,8 +1,6 @@
 import React from 'react'
 import {ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import { useSelector } from 'react-redux';
-import './linechart.scss'
-
 
 export default function DataChart() {
   const globalChartData = useSelector(state => state.countries?.chartData)

@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { Button, Spin } from 'antd'
 import axios from 'axios'
 import NewsList from './components/newslist'
-import './components/newslist/newslist.scss'
 
 export default function News() {
   const [newsList, setNewsList] = useState([])

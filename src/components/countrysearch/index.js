@@ -4,7 +4,6 @@ import { useState, useCallback } from 'react';
 import { AutoComplete } from 'antd';
 import { useSelector } from 'react-redux';
 import _debounce from 'lodash/debounce';
-import './countrysearch.scss'
 
 export default function CountrySearch() {
   const [options, setOptions] = useState([])

@@ -1,0 +1,20 @@
+.country_list {
+    h2 {
+        color: red;
+    }
+    .ant-table-wrapper {
+        @include mobile {
+            * {
+                font-size: 10px;
+            }
+        }
+        .country_flag {
+            width: 50px;
+            height: 30px;
+            margin-right: 8px;
+        }
+        .country_name {
+            
+        }
+    }
+}

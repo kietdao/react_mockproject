@@ -2,8 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Table, Pagination } from 'antd';
-import './countrylist.scss'
-
 
 export default function CountryList() {
   const data = useSelector(state => state.countries.countryList)
@@ -15,7 +13,7 @@ export default function CountryList() {
       render: ({flag, countryName, iso3}) => (
         <Link to={`countries/${iso3}`}>
           <img src={flag} className='country_flag'/>
-          <span className='country_name'></span>{countryName}
+          <span className='country_name'>{countryName}</span>
         </Link>
       ),
     },

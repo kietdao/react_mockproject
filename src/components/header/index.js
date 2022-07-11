@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import i18n from "i18next";
 import { useNavigate } from 'react-router';
 import "../../translations/i18n";
-import './header.scss'
       
 export default function Header() {
   const navigate = useNavigate()

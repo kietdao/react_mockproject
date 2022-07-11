@@ -1,6 +1,11 @@
 .overview {
     box-shadow: 0px 0px 3px;
     margin: 15px 0;
+    @include mobile {
+        .ant-row {
+            flex-direction: column;
+        }
+    }
     h2 {
         font-size: 36px;
         border-bottom: 1px solid #ccc;

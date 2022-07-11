@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { Button, Checkbox, Form, Input } from 'antd';
-import './login.scss'
 
 export default function Login() {
   const users = JSON.parse(localStorage.getItem('users'))
