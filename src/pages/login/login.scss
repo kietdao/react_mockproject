@@ -18,7 +18,11 @@
             .login_registerlink {
                 font-size: 12px;
             }
+        }   
+    }
+    @include mobile {
+        .login_form {
+            width: 100%;
         }
-       
     }
 }

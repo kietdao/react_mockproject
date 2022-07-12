@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import i18n from "i18next";
 import { useNavigate } from 'react-router';
+import { Switch } from 'antd';
 import "../../translations/i18n";
       
 export default function Header() {
@@ -43,7 +44,13 @@ export default function Header() {
               <a onClick={onLogout}>Logout</a>
             </li>
           )}
-
+          <li className='header_nav_item'>
+            <Switch
+              checkedChildren={1}
+              unCheckedChildren={0}
+              defaultChecked
+            />
+          </li>
         </ul>
       </div>
     </div>
