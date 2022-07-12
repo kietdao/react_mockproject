@@ -1,15 +1,18 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik';
+import { message } from 'antd';
 import * as Yup from 'yup';
 
 export default function Register() {
   const [userList, setUserList] = useState(JSON.parse(localStorage.getItem('users')))
+  const navigate = useNavigate()
   const SignupSchema = Yup.object().shape({
     userName: Yup.string()
       .min(6, 'Username should be of minimum 6 characters!')
       .max(50, 'Username should be of maximum 50 characters!')
       .required('Username is required!')
-      .test('username', 'This username has been used!!', (username) => {
+      .test('username', 'This username has been used, please choose another username!', (username) => {
         let result
         result = userList.some(user => username === user.username)
         return !result
@@ -27,6 +30,13 @@ export default function Register() {
     const newUserList = [...userList,newUser]
     localStorage.setItem('users', JSON.stringify(newUserList))
     setUserList(newUserList)
+    msgSuccess()
+  }
+  const msgSuccess = () => {
+    message.success('Register Success!')
+    setTimeout(() => {
+      navigate('/login')
+    }, 2000)
   }
   return (
     <div className='register_page'>

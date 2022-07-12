@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { message } from 'antd';
+import { Button, Form, Input } from 'antd';
 
 export default function Login() {
   const users = JSON.parse(localStorage.getItem('users'))
@@ -10,15 +11,23 @@ export default function Login() {
     users.map(user => {
       if(user.username === values.username && user.password === values.password) {
         localStorage.setItem('isLogin', JSON.stringify(true))
-        navigate('/')
-      }
+        msgSuccess('Login Success!')
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
+      } 
     })
   };
 
+  const msgSuccess = () => {
+    message.success('Login Success!')
+  }
+  const msgError = (field) => {
+    message.error(`${field} is wrong!`)
+  }
   const onLoginFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-
+    console.log('Failed:', errorInfo)
+  }
   return (
     <div className='login_page'>
       <div className='login_form'>
@@ -35,7 +44,6 @@ export default function Login() {
             remember: true,
           }}
           onFinish={onLogin}
-          onFinishFailed={onLoginFailed}
           autoComplete="off"
         >
           <Form.Item
@@ -65,16 +73,12 @@ export default function Login() {
           </Form.Item>
           <div className='login_actions'>
             <Form.Item
-              name="remember"
-              valuePropName="checked"
               wrapperCol={{
                 span: 24,
               }}
             >
-              <Checkbox>Remember me</Checkbox>
               <span className='login_registerlink'>Don't have account? <Link to='/register'>Click here</Link> to register</span>
             </Form.Item>
-
             <Form.Item
               wrapperCol={{
                 span: 24,
