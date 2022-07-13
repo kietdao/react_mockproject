@@ -14,7 +14,7 @@ export default function CountrySearch() {
     value: countryName,
     label: (
       <div className='search_country_options' key={key}>
-        <Link to={`/countries/${iso3}`}>
+        <Link to={`/countries/${iso3}`} value={countryName}>
           <img className='country_flag' src={flag}/>
           <div className='country_name'>{countryName}</div>
         </Link>
@@ -33,7 +33,7 @@ export default function CountrySearch() {
     })
     return result !== null ? result : []
   }
-  const handleSearch = useCallback(_debounce((value) => {
+  const handleSearch = (value) => {
     if(value === '') {
       setIsLoading(false)
     } else {
@@ -41,10 +41,7 @@ export default function CountrySearch() {
     }
     let result = searchResult(value)
     setOptions([...result])
-  }, 2000),[options]);
-  const onSelect = (data) => {
-    console.log(data);
-  };
+  }
   return (
     <div className='search_country'>
         <h2>Search Country For Defails</h2>
@@ -55,7 +52,6 @@ export default function CountrySearch() {
               style={{
                 width: `100%`,
               }}
-              onSelect={onSelect}
               onSearch={handleSearch}
               placeholder="Enter Country Name Here..."
               loading={isLoading ? true : false}

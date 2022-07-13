@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { Col, Row } from 'antd';
 import { useParams } from 'react-router-dom'
 import OverView from '../../components/overview';
-import LineChartDetail from '../../components/linechartdetail';
+import DataChart from '../../components/linechart';
+import CountrySearch from '../../components/countrysearch'
 import axios from 'axios'
 
 export default function DetailCountry() {
@@ -28,7 +29,7 @@ export default function DetailCountry() {
       }
     }
     getHistoricalData()
-  }, [])
+  }, [iso3])
   const getCountryData = (iso3) => {
     return axios.get(`https://disease.sh/v3/covid-19/countries/${iso3}`)
   }
@@ -39,8 +40,11 @@ export default function DetailCountry() {
     <div className='country_detail'>
       <div className='country_detail_container'>
         <Row gutter={16}>
-            <Col lg={12} sm={24} xs={24}><OverView data={countryData}/></Col>
-            <Col lg={12} sm={24} xs={24}><LineChartDetail data={historicalData}/></Col>
+            <Col lg={12} sm={24} xs={24}>
+              <CountrySearch />
+              <OverView data={countryData}/>
+            </Col>
+            <Col lg={12} sm={24} xs={24}><DataChart data={historicalData}/></Col>
         </Row>
         <Row gutter={16}>
             <Col lg={12} sm={24} xs={24}></Col>
