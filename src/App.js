@@ -77,6 +77,9 @@ function App() {
             <Home />
           </PrivateRoute>
         }/>
+        <Route exact path='countries/:iso3' element={
+          <DetailCountry />
+        } />
         <Route exact path='/news' element={<News />}/>
         <Route exact path='/login' element={
           <AuthRoute>

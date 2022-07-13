@@ -9,6 +9,15 @@
     h2 {
         font-size: 36px;
         border-bottom: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .overview_flag {
+            width: 50px;
+            height: 30px;
+            margin-right: 8px;
+            transform: translateY(2px);
+        }
     }
     .red {
         color: #e53e33;
