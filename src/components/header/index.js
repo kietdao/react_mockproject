@@ -1,14 +1,19 @@
-import React from 'react'
+import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import i18n from "i18next";
 import { useNavigate } from 'react-router';
 import { Switch } from 'antd';
 import "../../translations/i18n";
       
-export default function Header() {
+export default function Header(props) {
+  const [theme, setTheme] = useState('dark')
   const navigate = useNavigate()
   const changeLanguages = () => {
     i18n.changeLanguage('en')
+  }
+  const changeTheme = (value) => {
+    setTheme(value ? 'dark' : 'light')
+    props?.getTheme(theme)
   }
   const onLogout = () => {
     localStorage.setItem('isLogin', JSON.stringify(false))
@@ -16,7 +21,7 @@ export default function Header() {
   }
   return (
     <div className='header'>
-      <div className='header_container'>
+      <div className={theme === 'dark' ? 'header_container-dark' : 'header_container'}>
         <Link to='/'>
             <div className='header_logo'>
               <img />
@@ -46,8 +51,10 @@ export default function Header() {
           )}
           <li className='header_nav_item'>
             <Switch
-              checkedChildren={1}
-              unCheckedChildren={0}
+              checked={theme === 'dark'}
+              onChange={changeTheme}
+              checkedChildren="Dark"
+              unCheckedChildren="Light"
               defaultChecked
             />
           </li>

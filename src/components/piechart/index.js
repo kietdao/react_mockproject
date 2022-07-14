@@ -45,7 +45,7 @@ export default function PieChart(props) {
             allowPointSelect: false,
             cursor: "pointer",
             dataLabels: {
-              enabled: false
+              enabled: true
             },
             showInLegend: false,
             borderWidth: 0,

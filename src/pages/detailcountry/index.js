@@ -5,6 +5,7 @@ import OverView from '../../components/overview';
 import DataChart from '../../components/linechart';
 import PieChart from '../../components/piechart'
 import CountrySearch from '../../components/countrysearch'
+import WorldMap from '../../components/worldmap'
 import axios from 'axios'
 
 export default function DetailCountry() {
@@ -61,12 +62,8 @@ export default function DetailCountry() {
             </Col>
             <Col lg={12} sm={24} xs={24}>
               <DataChart data={historicalData}/>
+              <WorldMap />
             </Col>
-        </Row>
-        <Row gutter={16}>
-            <Col lg={12} sm={24} xs={24}>
-            </Col>
-            <Col lg={12} sm={24} xs={24}></Col>
         </Row>
       </div>  
     </div>

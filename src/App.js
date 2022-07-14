@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom'
 import axios from 'axios';
@@ -15,6 +15,7 @@ import 'antd/dist/antd.css'
 import './App.scss';
 localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
 function App() {
+  const [theme, setTheme] = useState('dark')
   const dispatch = useDispatch()
   useEffect(() => {
     async function getTotalData() {
@@ -68,13 +69,17 @@ function App() {
   const getCountriesListData = () => {
     return axios.get('https://disease.sh/v3/covid-19/countries')
   }
+  const getTheme = (theme) => {
+    setTheme(theme)
+  }
+  console.log(theme)
   return (
     <div className="App">
-      <Header />
+      <Header getTheme={getTheme}/>
       <Routes>
         <Route exact path='/' element={
           <PrivateRoute>
-            <Home />
+            <Home theme={theme}/>
           </PrivateRoute>
         }/>
         <Route exact path='countries/:iso3' element={

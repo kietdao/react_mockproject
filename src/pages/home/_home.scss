@@ -2,4 +2,10 @@
     .home_container {
         padding: 15px;
     }
+    .home_container-dark {
+        * {
+            background-color: #2b2611;
+            color: #fff;
+        }
+    }
 }
