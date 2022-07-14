@@ -3,6 +3,7 @@ import { Col, Row } from 'antd';
 import { useParams } from 'react-router-dom'
 import OverView from '../../components/overview';
 import DataChart from '../../components/linechart';
+import PieChart from '../../components/piechart'
 import CountrySearch from '../../components/countrysearch'
 import axios from 'axios'
 
@@ -43,11 +44,28 @@ export default function DetailCountry() {
             <Col lg={12} sm={24} xs={24}>
               <CountrySearch />
               <OverView data={countryData}/>
+              <div className='pie_chart'>
+                <h2>Chart Of Rates</h2>
+                <Row gutter={8}>
+                  <Col lg={8} sm={24} xs={24}>
+                    <PieChart confirmed={countryData?.casesPerOneMillion}/>
+                  </Col>
+                  <Col lg={8} sm={24} xs={24}>
+                    <PieChart recovered={countryData?.recoveredPerOneMillion}/>
+                  </Col>
+                  <Col lg={8} sm={24} xs={24}>
+                    <PieChart deaths={countryData?.deathsPerOneMillion}/>
+                  </Col>
+                </Row>
+              </div>
             </Col>
-            <Col lg={12} sm={24} xs={24}><DataChart data={historicalData}/></Col>
+            <Col lg={12} sm={24} xs={24}>
+              <DataChart data={historicalData}/>
+            </Col>
         </Row>
         <Row gutter={16}>
-            <Col lg={12} sm={24} xs={24}></Col>
+            <Col lg={12} sm={24} xs={24}>
+            </Col>
             <Col lg={12} sm={24} xs={24}></Col>
         </Row>
       </div>  

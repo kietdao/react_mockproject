@@ -25,7 +25,7 @@ export default function OverView(props) {
       <div className='overview_detail'>
         <Row gutter={16}>
           <Col lg={8} sm={24} className='overview_item red'>
-            <h4 className='overview_title'>Cases</h4>
+            <h4 className='overview_title'>Confirmed</h4>
             <span className='overview_data'>{data?.confirmed.toLocaleString('en-US')}</span>
           </Col>
           <Col lg={8} sm={24} className='overview_item green'>
