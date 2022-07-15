@@ -13,7 +13,7 @@ export default function Header(props) {
   }
   const changeTheme = (value) => {
     setTheme(value ? 'dark' : 'light')
-    props?.getTheme(theme)
+    props?.getTheme(value ? 'dark' : 'light')
   }
   const onLogout = () => {
     localStorage.setItem('isLogin', JSON.stringify(false))
@@ -21,7 +21,7 @@ export default function Header(props) {
   }
   return (
     <div className='header'>
-      <div className={theme === 'dark' ? 'header_container-dark' : 'header_container'}>
+      <div className='header_container'>
         <Link to='/'>
             <div className='header_logo'>
               <img />

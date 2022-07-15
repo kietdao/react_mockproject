@@ -9,7 +9,7 @@ import CountrySearch from '../../components/countrysearch'
 export default function Home(props) {
   return (
     <div className='home_page'>
-      <div className={props?.theme === 'dark' ? 'home_container-dark' : 'home_container'}>
+      <div className='home_container'>
         <Row gutter={16}>
             <Col lg={12} sm={24} xs={24}><CountryList /></Col>
             <Col lg={12}> 

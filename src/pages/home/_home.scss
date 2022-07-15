@@ -3,8 +3,9 @@
         padding: 15px;
     }
     .home_container-dark {
+        @extend .home_container;
         * {
-            background-color: #2b2611;
+            background-color: #2b2111;
             color: #fff;
         }
     }

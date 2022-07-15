@@ -1,6 +1,60 @@
 .App {
   text-align: center
 }
+.App_theme-dark {
+  @extend .App;
+  *{
+    background-color: #2b2111;
+    color: #fff;
+    a {
+      color: #fff;
+    }
+  }
+  .country_list {
+    .ant-table-thead > tr > th {
+      background-color: transparent;
+      color: unset;
+    }
+    td.ant-table-column-sort {
+      background-color: #d89614;
+    }
+    .ant-table-tbody > tr > td {
+      transition: unset;
+    }
+    .ant-table-tbody > tr.ant-table-row:hover > td, .ant-table-tbody > tr > td.ant-table-cell-row-hover {
+      background-color: #d89614;
+      a {
+        background-color: #d89614;
+        span {
+          background-color: #d89614
+        }
+      }
+    }
+    .ant-pagination-item-active, .ant-pagination-item:hover {
+      border-color: #d89614;
+      a {
+        color: #d89614
+      }
+    }
+    .ant-pagination-prev .ant-pagination-item-link, .ant-pagination-next .ant-pagination-item-link {
+      background-color: unset 
+    }
+    .ant-pagination-prev:hover .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link {
+      border-color: #d89614;
+      * {
+        color: #d89614;
+      }
+    }
+    .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis, .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis {
+      color: unset
+    }
+    .ant-pagination-jump-prev:hover, .ant-pagination-jump-next:hover {
+      * {
+        color: #d89614
+      }
+    }
+  }
+}
 // Break-points
 @import './Responsive';
 

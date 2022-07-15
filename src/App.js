@@ -72,9 +72,8 @@ function App() {
   const getTheme = (theme) => {
     setTheme(theme)
   }
-  console.log(theme)
   return (
-    <div className="App">
+    <div className={theme === 'dark' ? 'App_theme-dark' : 'App'}>
       <Header getTheme={getTheme}/>
       <Routes>
         <Route exact path='/' element={

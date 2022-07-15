@@ -1,11 +1,11 @@
 .header {
     width: 100%;
     border-bottom: 1px solid #ccc;
-    padding: 15px;
     .header_container {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        padding: 15px;
         a {
             text-decoration: none;
         }
@@ -32,11 +32,12 @@
             }
         }
     }
-    .header_container-dark {
-        @extend .header_container;
-        * {
-            background-color: #2b2611;
-            color: #fff;
-        }
-    } 
+}
+
+.header-dark {
+    @extend .header;
+    * {
+        background-color: #2b2111;
+        color: #fff
+    }
 }
