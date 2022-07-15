@@ -1,11 +1,14 @@
 .header {
     width: 100%;
     border-bottom: 1px solid #ccc;
+    background-color: #2b2111;
+    color: #fff;
     .header_container {
         display: flex;
         align-items: center;
         justify-content: space-around;
         padding: 15px;
+        font-size: 16px;
         a {
             text-decoration: none;
         }
@@ -13,10 +16,17 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
+            img {
+                width: 50px;
+                height: 50px;
+            }
             .header_logo_name {
                 text-transform: uppercase;
                 font-weight: bold;
                 padding: 0 15px;
+                span {
+                    color: #d89614;
+                }
             }
         }
         .header_nav {
@@ -29,15 +39,111 @@
                 text-transform: uppercase;
                 font-weight: bold;
                 padding: 0 15px;
+                a {
+                    color: #d89614;
+                }
+                .ant-switch {
+                    box-shadow: 1px 1px 10px #d89614;
+                    .ant-switch-inner {
+                        font-size: 22px;
+                        color: #fff;
+                        margin: 0 4px 0 20px;
+                    }
+                }
+                .ant-switch.ant-switch-checked {
+                    background-color: #d89614;
+                    .ant-switch-handle {
+                        background-color: unset;
+                        * {
+                            background-color: #d89614;
+                        }
+                    }
+                    .ant-switch-inner {
+                        font-size: 22px;
+                        background-color: unset;
+                        margin: 0 20px 0 4px;
+                        * {
+                            background-color: transparent;
+                        }
+                    }
+                } 
+            }
+        }
+        .header_nav_list {
+            display: none;
+            .ant-dropdown {
+                width: 100%;
+            }
+            .ant-space {
+                .ant-space-item {
+                    .ant-btn {
+                        &:hover {
+                            border-color: #d89614;
+                            background-color: transparent;
+                            span{
+                                * {
+                                    color: #d89614;
+                                }  
+                            }
+                        }
+                        span{
+                            * {
+                                font-size: 16px;
+                            }  
+                        }
+                    }
+                }
+            }
+        }
+        @include tablet {
+            .header_nav {
+                display: none;
+            }
+            .header_nav_list {
+                display: block;
+            }
+        }
+        @include mobile {
+            .header_nav {
+                display: none;
+            }
+            .header_nav_list {
+                display: block;
             }
         }
     }
 }
-
-.header-dark {
-    @extend .header;
-    * {
-        background-color: #2b2111;
-        color: #fff
+.ant-dropdown-menu {
+    background-color: #2b2111;
+    .ant-dropdown-menu-item {
+        text-align: center;
+        color:#d89614;
+        font-weight: bold;
+        font-size: 16px;
     }
 }
+.ant-switch {
+    box-shadow: 1px 1px 10px #d89614;
+    .ant-switch-inner {
+        font-size: 22px;
+        color: #fff;
+        margin: 0 4px 0 20px;
+    }
+}
+.ant-switch.ant-switch-checked {
+    background-color: #d89614;
+    .ant-switch-handle {
+        background-color: unset;
+        * {
+            background-color: #d89614;
+        }
+    }
+    .ant-switch-inner {
+        font-size: 22px;
+        background-color: unset;
+        margin: 0 20px 0 4px;
+        * {
+            background-color: transparent;
+        }
+    }
+} 

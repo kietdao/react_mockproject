@@ -11,11 +11,13 @@ import DetailCountry from './pages/detailcountry';
 import { setCountrylist, setAllData, setChartData } from './features/countries/countriesSlice';
 import AuthRoute from './components/authroute'
 import PrivateRoute from './components/privateroute'
+import { Spin } from 'antd';
 import 'antd/dist/antd.css'
 import './App.scss';
 localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
 function App() {
   const [theme, setTheme] = useState('dark')
+  const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {
     async function getTotalData() {
@@ -26,14 +28,13 @@ function App() {
           recovered: allData?.data?.recovered,
           deaths: allData?.data?.deaths
         }
+        setIsLoading(true)
         dispatch(setAllData(allInfo))
       } catch(err) {
         console.log(err)
       }
     }
     getTotalData()
-  }, [])
-  useEffect(() => {
     async function getChartData() {
       try {
         const chartData = await axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
@@ -43,8 +44,6 @@ function App() {
       }
     }
     getChartData()
-  }, [])
-  useEffect(() => {
     async function getCountriesList() {
       try {
         const countriesData = await getCountriesListData()
@@ -60,6 +59,7 @@ function App() {
           }
         })
         dispatch(setCountrylist(countriesList))
+        setIsLoading(false)
       } catch(err) {
         console.log(err)
       }
@@ -74,6 +74,11 @@ function App() {
   }
   return (
     <div className={theme === 'dark' ? 'App_theme-dark' : 'App'}>
+      {isLoading === true && (
+        <div className='loading_global'>
+          <Spin tip='Loading data...' /> 
+        </div>
+      )}
       <Header getTheme={getTheme}/>
       <Routes>
         <Route exact path='/' element={

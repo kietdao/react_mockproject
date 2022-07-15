@@ -5,6 +5,7 @@
         align-items: center;
         justify-content: space-around;
         flex-wrap: wrap;
+        min-height: 100vh;
         .news_item {
             max-height: 500px;
             .ant-card {
@@ -20,5 +21,14 @@
                 }
             }
         }
+    }
+    .loadmore_btn {
+        .ant-btn:hover {
+            border-color: #d89614;
+            background-color: #2b2111;
+            span {
+                color: #d89614;
+            }
+        } 
     }
 }

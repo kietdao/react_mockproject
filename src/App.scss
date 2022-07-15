@@ -1,5 +1,5 @@
 .App {
-  text-align: center
+  text-align: center;
 }
 .App_theme-dark {
   @extend .App;
@@ -53,6 +53,34 @@
         color: #d89614
       }
     }
+  }
+}
+.ant-spin-spinning {
+  .ant-spin-dot.ant-spin-dot-spin {
+    .ant-spin-dot-item {
+      background-color: #d89614;
+    }
+  }
+  .ant-spin-text {
+    color: #d89614; 
+  }
+}
+.loading_global {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(216, 150, 20, .5);
+  * {
+    background-color: transparent;
+  }
+  .ant-spin-spinning {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 // Break-points
