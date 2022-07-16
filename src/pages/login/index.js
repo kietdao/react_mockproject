@@ -30,66 +30,74 @@ export default function Login() {
   }
   return (
     <div className='login_page'>
-      <div className='login_form'>
-        <h2>Login</h2>
-        <Form
-          name="basic"
-          labelCol={{
-            span: 24,
-          }}
-          wrapperCol={{
-            span: 24,
-          }}
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onLogin}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your username!',
-              },
-            ]}
+      <div className='login_container'>
+        <div className='login_form'>
+          <h2>Login</h2>
+          <Form
+            name="basic"
+            labelCol={{
+              lg: 0,
+              md: 0,
+              sm: 0,
+              xs: 0
+            }}
+            wrapperCol={{
+              lg: 24,
+              md: 24,
+              sm: 24,
+              xs: 24
+            }}
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onLogin}
+            autoComplete="off"
           >
-            <Input />
-          </Form.Item>
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your username!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your password!',
-              },
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
-          <div className='login_actions'>
             <Form.Item
-              wrapperCol={{
-                span: 24,
-              }}
+              label="Password"
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                },
+              ]}
             >
-              <span className='login_registerlink'>Don't have account? <Link to='/register'>Click here</Link> to register</span>
+              <Input.Password />
             </Form.Item>
-            <Form.Item
-              wrapperCol={{
-                span: 24,
-              }}
-            >
-              <Button type="primary" htmlType="submit">
-                Login
-              </Button>
-            </Form.Item>
-          </div>  
-        </Form>
+            <div className='login_actions'>
+              <Form.Item
+                wrapperCol={{
+                  lg: 24,
+                }}
+              >
+                <span className='login_registerlink'>Don't have account? <Link to='/register'>Click here</Link> to register</span>
+              </Form.Item>
+              <Form.Item
+                wrapperCol={{
+                  lg: 24,
+                }}
+              >
+                <Button type="primary" htmlType="submit">
+                  Login
+                </Button>
+              </Form.Item>
+            </div>  
+          </Form>
+        </div>
       </div>
     </div>
   )

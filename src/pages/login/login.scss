@@ -2,27 +2,50 @@
     display: flex;
     justify-content: center;
     padding: 16px;
-    .login_form {
-        border: 1px solid #ccc;
-        padding: 16px;
-        width: 25%;
-        h2 {
-            margin: 0;
-        }
-        .ant-row {
-            margin-bottom: 12px;
-        }
-        .login_actions {
-            display: flex;
-            justify-content: space-between;
-            .login_registerlink {
-                font-size: 12px;
-            }
-        }   
-    }
-    @include mobile {
+    height: 100vh;
+    .login_container {
+        display: block;
+        width: 100%;
         .login_form {
-            width: 100%;
+            border: 1px solid #ccc;
+            padding: 16px;
+            width: 30%;
+            margin: 0 auto;
+            background-color: #2b2111;
+            h2 {
+                margin: 0;
+                color: #fff;
+            }
+            .ant-row {
+                margin-bottom: 12px;
+                .ant-form-item-label > label {
+                    color: #fff;
+                }
+            }
+            .login_actions {
+                display: flex;
+                justify-content: space-between;
+                * {
+                    color: #fff;
+                }
+                .login_registerlink {
+                    font-size: 12px;
+                    a {
+                        color: #d89614;
+                    }
+                }
+            }   
+        }
+        @include tablet {
+            .login_form {
+                width: 70%;
+            }
+        }
+        @include mobile {
+            .login_form {
+                width: 100%;
+            }
         }
     }
+
 }
