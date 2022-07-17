@@ -1,44 +1,62 @@
 .register_page {
     display: flex;
     justify-content: center;
-    padding: 15px;
-    .form_register {
-        border: 1px solid #ccc;
-        width: 25%;
-        form {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 15px;
-            .form_group {
-                width: 100%;
-                margin-bottom: 12px;
-                input {
-                    width: 80%;
-                    padding: 8px;
-                }
-                .form_msg {
-                    color: red;
-                }
-            }
-            .btn {
-                padding: 6px 12px;
-                text-transform: uppercase;
-                font-weight: bold;
+    padding: 16px;
+    height: 100vh;
+    .register_container {
+        display: block;
+        width: 100%;
+        .form_register {
+            border: 1px solid #ccc;
+            padding: 16px;
+            width: 30%;
+            margin: 0 auto;
+            background-color: #2b2111;
+            h2 {
                 color: #fff;
-                background-color: #1890ff;
-                border: none;
-                cursor: pointer;
-                &:hover {
-                    opacity: .8;
+            }
+            form {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                padding: 15px;
+                .form_group {
+                    width: 100%;
+                    margin-bottom: 12px;
+                    input {
+                        width: 80%;
+                        padding: 8px;
+                        background-color: #fff;
+                        color: #2b2111;
+                    }
+                    .form_msg {
+                        color: red;
+                    }
+                }
+                .btn {
+                    padding: 6px 12px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    color: #fff;
+                    background-color: #d89614;
+                    border: none;
+                    cursor: pointer;
+                    &:hover {
+                        opacity: .8;
+                    }
                 }
             }
         }
-    }
-    @include mobile {
-        .form_register {
-            width: 100%;
+        @include tablet {
+            .form_register {
+                width: 50%;
+            }
+        }
+        @include mobile {
+            .form_register {
+                width: 100%;
+            }
         }
     }
 }

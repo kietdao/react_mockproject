@@ -34,6 +34,16 @@
                         color: #d89614;
                     }
                 }
+                button.ant-btn.ant-btn-primary {
+                    background-color: #d89614;
+                    border: none;
+                    span {
+                        background-color: transparent;
+                    }
+                    &:hover {
+                        opacity: .8;
+                    }
+                }
             }   
         }
         @include tablet {

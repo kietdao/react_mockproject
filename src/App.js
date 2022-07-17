@@ -16,7 +16,7 @@ import 'antd/dist/antd.css'
 import './App.scss';
 localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
 function App() {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {

@@ -40,36 +40,39 @@ export default function Register() {
   }
   return (
     <div className='register_page'>
-      <div className='form_register'>
-        <h2>Register</h2>
-          <Formik
-          initialValues={{
-            userName: '',
-            password: ''
-          }}
-          validationSchema={SignupSchema}
-          validateOnChange={false}
-          onSubmit={handleSubmit}
-          >
-          {({ errors, touched }) => (
-            <Form>
-              <div className='form_group'>
-                <Field name="userName" placeholder='Enter your username here...'/>
-                {errors.userName && touched.userName ? (
-                  <div className='form_msg'>*{errors.userName}</div>
-                ) : null}
-              </div>
-              <div className='form_group'>
-                <Field name="password" type='password' placeholder='Please enter your password...'/>
-                {errors.password && touched.password ? (
-                  <div className='form_msg'>*{errors.password}</div>
-                ) : null}
-              </div>
-              <button type="submit" className='btn'>Submit</button>
-            </Form>
-          )}
-          </Formik>
+      <div className='register_container'>
+        <div className='form_register'>
+          <h2>Register</h2>
+            <Formik
+            initialValues={{
+              userName: '',
+              password: ''
+            }}
+            validationSchema={SignupSchema}
+            validateOnChange={false}
+            onSubmit={handleSubmit}
+            >
+            {({ errors, touched }) => (
+              <Form>
+                <div className='form_group'>
+                  <Field name="userName" placeholder='Enter your username here...'/>
+                  {errors.userName && touched.userName ? (
+                    <div className='form_msg'>*{errors.userName}</div>
+                  ) : null}
+                </div>
+                <div className='form_group'>
+                  <Field name="password" type='password' placeholder='Please enter your password...'/>
+                  {errors.password && touched.password ? (
+                    <div className='form_msg'>*{errors.password}</div>
+                  ) : null}
+                </div>
+                <button type="submit" className='btn'>Submit</button>
+              </Form>
+            )}
+            </Formik>
+        </div>
       </div>
+    
     </div>
   )
 }

@@ -9,7 +9,7 @@ import { WiDaySunny, WiLightning} from "react-icons/wi";
 import logo from './image/logo.png'
       
 export default function Header(props) {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   const navigate = useNavigate()
   const changeLanguages = () => {
     i18n.changeLanguage('en')
@@ -68,7 +68,6 @@ export default function Header(props) {
                 onChange={changeTheme}
                 checkedChildren={<WiLightning />}
                 unCheckedChildren={<WiDaySunny />}
-                defaultChecked
                 />
             </>
           ),
@@ -112,7 +111,6 @@ export default function Header(props) {
               onChange={changeTheme}
               checkedChildren={<WiLightning />}
               unCheckedChildren={<WiDaySunny />}
-              defaultChecked
             />
           </li>
         </ul>
