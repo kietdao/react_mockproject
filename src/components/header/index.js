@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom'
 import i18n from "i18next";
 import { useNavigate } from 'react-router';
 import { Switch, Button, Dropdown, Menu, Space } from 'antd';
-import { UnorderedListOutlined } from '@ant-design/icons';
+import { ConsoleSqlOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import "../../translations/i18n";
 import { WiDaySunny, WiLightning} from "react-icons/wi";
 import logo from './image/logo.png'
       
 export default function Header(props) {
   const [theme, setTheme] = useState('light')
+  const [language, setLanguage] = useState('en')
   const navigate = useNavigate()
-  const changeLanguages = () => {
+  const changeLanguages = (value) => {
+    setLanguage(value ? 'en' : 'vn')
+    console.log(language)
     i18n.changeLanguage('en')
   }
   const changeTheme = (value) => {
@@ -111,6 +114,14 @@ export default function Header(props) {
               onChange={changeTheme}
               checkedChildren={<WiLightning />}
               unCheckedChildren={<WiDaySunny />}
+            />
+          </li>
+          <li className='header_nav_item'>
+            <Switch
+              checked={language === 'en'}
+              onChange={changeLanguages}
+              checkedChildren='EN'
+              unCheckedChildren='VN'
             />
           </li>
         </ul>

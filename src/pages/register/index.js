@@ -66,7 +66,7 @@ export default function Register() {
                     <div className='form_msg'>*{errors.password}</div>
                   ) : null}
                 </div>
-                <button type="submit" className='btn'>Submit</button>
+                <button type="submit" className='btn'>Register</button>
               </Form>
             )}
             </Formik>

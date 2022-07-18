@@ -5,11 +5,6 @@
         
     }
     .ant-table-wrapper {
-        @include mobile {
-            * {
-                font-size: 10px;
-            }
-        }
         .country_flag {
             width: 50px;
             height: 30px;
@@ -17,6 +12,16 @@
         }
         .country_name {
             
+        }
+        @include mobile {
+            * {
+                font-size: 6px;
+            }
+            .country_flag {
+                width: 30px;
+                height: 18px;
+                margin-right: 4px;
+            }
         }
     }
 }
