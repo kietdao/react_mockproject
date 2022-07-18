@@ -1,9 +1,12 @@
-import React from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import Highcharts from "highcharts";
 import HighchartsReact from 'highcharts-react-official'
 import { useSelector } from 'react-redux';
 
 export default function DataChart(props) {
+  const [confirmedVisible, setConfirmedVisible] = useState(true)
+  const [recoveredVisible, setRecoveredVisible] = useState(true)
+  const [deathsVisible, setDeathsVisible] = useState(true)
   const globalChartData = useSelector(state => state.countries?.chartData)
   const customedData = JSON.parse(JSON.stringify(globalChartData))
   let data = customedData?.data
@@ -42,6 +45,12 @@ export default function DataChart(props) {
       deathsData?.[index]
     ]
   })
+  const setDefaultVisibleLine = useMemo(() => {
+    if(confirmedVisible === false && recoveredVisible === false && deathsVisible === false) {
+      setRecoveredVisible(true)
+    }
+  }, [confirmedVisible, recoveredVisible, deathsVisible])
+
   const config = {
     chart: {
       type: 'line',
@@ -52,6 +61,15 @@ export default function DataChart(props) {
     },
     subtitle: {
       text: "Overview chart includes Confirmed, Recovered, Deaths cases"
+    },
+    plotOptions: {
+      series: {
+        events: {
+          legendItemClick: function() {
+            setDefaultVisibleLine()
+          }
+        }
+      }
     },
     yAxis: {
       title: {
@@ -66,19 +84,37 @@ export default function DataChart(props) {
         name: "Confirmed Cases",
         type: "line",
         color: "#e53e33",
-        data: casesForChart
+        data: casesForChart,
+        visible: confirmedVisible,
+        events: {
+          legendItemClick: function() {
+            this.visible ? setConfirmedVisible(false) : setConfirmedVisible(true)
+          }
+        }
       },
       {
         name: "Recovered Cases",
         type: "line",
         color: "#38a16e",
-        data: recoveredForChart
+        data: recoveredForChart,
+        visible: recoveredVisible,
+        events: {
+          legendItemClick: function() {
+            this.visible ? setRecoveredVisible(false) : setRecoveredVisible(true)
+          }
+        }
       },
       {
         name: "Deaths Cases",
         type: "line",
         color: "#71809b",
-        data: deathsForChart
+        data: deathsForChart,
+        visible: deathsVisible,
+        events: {
+          legendItemClick: function() {
+            this.visible ? setDeathsVisible(false) : setDeathsVisible(true)
+          }
+        }
       },
     ],
     exporting: {
