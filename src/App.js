@@ -17,7 +17,7 @@ import './App.scss';
 localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
 function App() {
   const [theme, setTheme] = useState('light')
-  const [language, setLanguage] = useState(`${localStorage.getItem('language')}`)
+  const [language, setLanguage] = useState('en')
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {

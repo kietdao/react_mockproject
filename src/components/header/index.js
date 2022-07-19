@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import i18n from "i18next";
 import { useNavigate } from 'react-router';
@@ -10,13 +10,12 @@ import logo from './image/logo.png'
       
 export default function Header(props) {
   const [theme, setTheme] = useState('light')
-  const [language, setLanguage] = useState('en')
+  const [language, setLanguage] = useState(`en`)
+  i18n.changeLanguage(language)
   const navigate = useNavigate()
   const changeLanguages = (value) => {
     setLanguage(value ? 'en' : 'vn')
-    localStorage.setItem('language', language)
-    props.getLanguage(language)
-    i18n.changeLanguage(language)
+    props.getLanguage(value ? 'en' : 'vn')
   }
   const changeTheme = (value) => {
     setTheme(value ? 'dark' : 'light')
