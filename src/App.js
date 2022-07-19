@@ -17,6 +17,7 @@ import './App.scss';
 localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
 function App() {
   const [theme, setTheme] = useState('light')
+  const [language, setLanguage] = useState(`${localStorage.getItem('language')}`)
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -72,6 +73,9 @@ function App() {
   const getTheme = (theme) => {
     setTheme(theme)
   }
+  const getLanguage = (language) => {
+    setLanguage(language)
+  }
   return (
     <div className={theme === 'dark' ? 'App_theme-dark' : 'App'}>
       {isLoading === true && (
@@ -79,11 +83,11 @@ function App() {
           <Spin tip='Loading data...' /> 
         </div>
       )}
-      <Header getTheme={getTheme}/>
+      <Header getTheme={getTheme} getLanguage={getLanguage}/>
       <Routes>
         <Route exact path='/' element={
           <PrivateRoute>
-            <Home theme={theme}/>
+            <Home language={language}/>
           </PrivateRoute>
         }/>
         <Route exact path='countries/:iso3' element={

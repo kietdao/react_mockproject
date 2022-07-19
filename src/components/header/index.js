@@ -14,8 +14,9 @@ export default function Header(props) {
   const navigate = useNavigate()
   const changeLanguages = (value) => {
     setLanguage(value ? 'en' : 'vn')
-    console.log(language)
-    i18n.changeLanguage('en')
+    localStorage.setItem('language', language)
+    props.getLanguage(language)
+    i18n.changeLanguage(language)
   }
   const changeTheme = (value) => {
     setTheme(value ? 'dark' : 'light')
@@ -31,13 +32,13 @@ export default function Header(props) {
         {
           key: 'home',
           label: (
-            <Link to='/'>Home</Link>
+            <Link to='/'>{i18n.t('home')}</Link>
           ),
         },
         {
           key: 'news',
           label: (
-            <Link to='/news'>News</Link>
+            <Link to='/news'>{i18n.t('news')}</Link>
           ),
         },
         {
@@ -45,10 +46,10 @@ export default function Header(props) {
           label: (
             JSON.parse(localStorage.getItem('isLogin')) === false ? (
               <>
-                <Link to='/login'>Login</Link>
+                <Link to='/login'>{i18n.t('login')}</Link>
               </>
             ) : (
-              <a onClick={onLogout}>Logout</a>
+              <a onClick={onLogout}>{i18n.t('logout')}</a>
             )
           ),
         },
@@ -57,7 +58,7 @@ export default function Header(props) {
           label: (
             JSON.parse(localStorage.getItem('isLogin')) === false && (
               <>
-                <Link to='/register'>Register</Link>
+                <Link to='/register'>{i18n.t('register')}</Link>
               </>
             ) 
           ),
@@ -75,6 +76,19 @@ export default function Header(props) {
             </>
           ),
         },
+        {
+          key: 'language',
+          label: (
+            <>
+              <Switch
+                checked={language === 'en'}
+                onChange={changeLanguages}
+                checkedChildren='EN'
+                unCheckedChildren='VN'
+              />
+            </>
+          ),
+        },
       ]}
     />
   );
@@ -89,23 +103,23 @@ export default function Header(props) {
         </Link>
         <ul className='header_nav'>
           <li className='header_nav_item'>
-            <Link to='/'>Home</Link>
+            <Link to='/'>{i18n.t('home')}</Link>
           </li>
           <li className='header_nav_item'>
-            <Link to='/news'>News</Link>
+            <Link to='/news'>{i18n.t('news')}</Link>
           </li>
           {JSON.parse(localStorage.getItem('isLogin')) === false ? (
             <>
               <li className='header_nav_item'>
-                <Link to='/login'>Login</Link>
+                <Link to='/login'>{i18n.t('login')}</Link>
               </li>
               <li className='header_nav_item'>
-                <Link to='/register'>Register</Link>
+                <Link to='/register'>{i18n.t('register')}</Link>
               </li>
             </>
           ) : (
             <li className='header_nav_item'>
-              <a onClick={onLogout}>Logout</a>
+              <a onClick={onLogout}>{i18n.t('logout')}</a>
             </li>
           )}
           <li className='header_nav_item'>
@@ -116,7 +130,7 @@ export default function Header(props) {
               unCheckedChildren={<WiDaySunny />}
             />
           </li>
-          <li className='header_nav_item'>
+          <li className='header_nav_item language'>
             <Switch
               checked={language === 'en'}
               onChange={changeLanguages}

@@ -1,14 +1,14 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Table, Pagination } from 'antd';
+import i18n from "i18next";
 
 export default function CountryList() {
   const data = useSelector(state => state.countries.countryList)
-
   const columns = [
     {
-      title: 'Country',
+      title: i18n.t('country'),
       key: 'country',
       render: ({flag, countryName, iso3}) => (
         <Link to={`countries/${iso3}`}>
@@ -18,7 +18,7 @@ export default function CountryList() {
       ),
     },
     {
-      title: 'Confirmed',
+      title: i18n.t('confirmed'),
       dataIndex: 'confirmed',
       key: 'confirmed',
       sorter: {
@@ -26,7 +26,7 @@ export default function CountryList() {
       },
     },
     {
-      title: 'Recovered',
+      title: i18n.t('recovered'),
       dataIndex: 'recovered',
       key: 'recovered',
       sorter: {
@@ -34,7 +34,7 @@ export default function CountryList() {
       },
     },
     {
-      title: 'Deaths',
+      title: i18n.t('deaths'),
       dataIndex: 'deaths',
       key: 'deaths',
       sorter: {
@@ -44,7 +44,7 @@ export default function CountryList() {
   ];
   return (
     <div className='country_list'>
-      <h2>Countries Effected</h2>
+      <h2>{i18n.t('countryEffected')}</h2>
       <Table loading={data ? false : true} rowKey={record => record.id} columns={columns} dataSource={data} pagination={
         {
           showSizeChanger: false
