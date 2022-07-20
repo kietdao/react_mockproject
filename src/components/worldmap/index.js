@@ -3,6 +3,7 @@ import Highcharts from 'highcharts'
 import HighchartsMap from "highcharts/modules/map";
 import HighchartsReact from 'highcharts-react-official'
 import map from "@highcharts/map-collection/custom/world.geo.json";
+import i18n from 'i18next'
 HighchartsMap(Highcharts);
 export default function WorldMap() {
   const data = useSelector(state => state.countries?.countryList)
@@ -12,10 +13,10 @@ export default function WorldMap() {
       height: 500
     },
     title: {
-      text: "Covid-19 World Map"
+      text: i18n.t('mapChart')
     },
     subtitle: {
-      text: "Covid-19 Cases"
+      text: i18n.t('mapChartSubt')
     },
     legend: {
       enabled: true
@@ -39,13 +40,13 @@ export default function WorldMap() {
       {
         type: "map",
         mapData: map,
-        name: 'Countries',
+        name: i18n.t('mapChart'),
         color: '#ccc',
       }
       ,
       {
         type: "map",
-        name: "Death Cases",
+        name: i18n.t('deaths'),
         color: '#71809b',
         data: data,
         mapData: map,
@@ -57,7 +58,7 @@ export default function WorldMap() {
       },
       {
         type: "map",
-        name: "Recovered Cases",
+        name: i18n.t('recovered'),
         color: '#38a16e',
         data: data,
         mapData: map,
@@ -69,7 +70,7 @@ export default function WorldMap() {
       },
       {
         type: "map",
-        name: "Confirmed Cases",
+        name: i18n.t('confirmed'),
         color: '#e53e33',
         data: data,
         mapData: map,
@@ -83,7 +84,6 @@ export default function WorldMap() {
   };
   return (
     <div className='world_map'>
-      <h2>WorldMap</h2>
       <HighchartsReact
           options={options}
           constructorType={'mapChart'}

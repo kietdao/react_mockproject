@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { AutoComplete } from 'antd';
 import { useSelector } from 'react-redux';
 import _debounce from 'lodash/debounce';
+import i18n from 'i18next'
 
 export default function CountrySearch() {
   const [options, setOptions] = useState([])
@@ -44,7 +45,7 @@ export default function CountrySearch() {
   }
   return (
     <div className='search_country'>
-        <h2>Search Country For Defails</h2>
+        <h2>{i18n.t('searchCountry')}</h2>
         <Row gutter={16}>
           <Col span={24}>
             <AutoComplete
@@ -53,7 +54,7 @@ export default function CountrySearch() {
                 width: `100%`,
               }}
               onSearch={handleSearch}
-              placeholder="Enter Country Name Here..."
+              placeholder={`${i18n.t('enterCountry')}...`}
               loading={isLoading ? true : false}
             />  
           </Col>

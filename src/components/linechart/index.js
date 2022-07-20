@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react'
 import Highcharts from "highcharts";
 import HighchartsReact from 'highcharts-react-official'
 import { useSelector } from 'react-redux';
+import i18n from 'i18next'
 
 export default function DataChart(props) {
   const [confirmedVisible, setConfirmedVisible] = useState(true)
@@ -57,10 +58,10 @@ export default function DataChart(props) {
       height: 500
     },
     title: {
-      text: `Overview Chart of ${props?.data?.country || 'All Countries'}`
+      text: `${i18n.t('overviewChartOf')} ${props?.data?.country || i18n.t('allCountry')}`
     },
     subtitle: {
-      text: "Overview chart includes Confirmed, Recovered, Deaths cases"
+      text: i18n.t('overviewChartSubt')
     },
     plotOptions: {
       series: {
@@ -81,7 +82,7 @@ export default function DataChart(props) {
     },
     series: [
       {
-        name: "Confirmed Cases",
+        name: i18n.t('confirmed'),
         type: "line",
         color: "#e53e33",
         data: casesForChart,
@@ -93,7 +94,7 @@ export default function DataChart(props) {
         }
       },
       {
-        name: "Recovered Cases",
+        name: i18n.t('recovered'),
         type: "line",
         color: "#38a16e",
         data: recoveredForChart,
@@ -105,7 +106,7 @@ export default function DataChart(props) {
         }
       },
       {
-        name: "Deaths Cases",
+        name: i18n.t('deaths'),
         type: "line",
         color: "#71809b",
         data: deathsForChart,

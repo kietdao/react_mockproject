@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { message } from 'antd';
 import { Button, Form, Input } from 'antd';
+import i18n from 'i18next'
 
 export default function Login() {
   const users = JSON.parse(localStorage.getItem('users'))
@@ -32,20 +33,20 @@ export default function Login() {
     <div className='login_page'>
       <div className='login_container'>
         <div className='login_form'>
-          <h2>Login</h2>
+          <h2>{i18n.t('login')}</h2>
           <Form
             name="basic"
             labelCol={{
-              lg: 0,
-              md: 0,
+              lg: 3,
+              md: 3,
               sm: 0,
-              xs: 0
+              xs: 0,
             }}
             wrapperCol={{
-              lg: 24,
-              md: 24,
+              lg: 22,
+              md: 21,
               sm: 24,
-              xs: 24
+              xs: 24,
             }}
             initialValues={{
               remember: true,
@@ -54,7 +55,7 @@ export default function Login() {
             autoComplete="off"
           >
             <Form.Item
-              label="Username"
+              label={`${i18n.t('username')}`}
               name="username"
               rules={[
                 {
@@ -67,7 +68,7 @@ export default function Login() {
             </Form.Item>
 
             <Form.Item
-              label="Password"
+              label={`${i18n.t('password')}`}
               name="password"
               rules={[
                 {
@@ -92,7 +93,7 @@ export default function Login() {
                 }}
               >
                 <Button type="primary" htmlType="submit">
-                  Login
+                  {i18n.t('login')}
                 </Button>
               </Form.Item>
             </div>  

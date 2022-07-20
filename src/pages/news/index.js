@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Button, Spin } from 'antd'
 import axios from 'axios'
+import i18n from 'i18next'
 import NewsList from './components/newslist'
 
 export default function News() {
@@ -29,13 +30,13 @@ export default function News() {
   }
   return (
     <div className='news_section'>
-      <h2>Summary Of News About Covid-19</h2>
+      <h2>{i18n.t('newsPageTitle')}</h2>
       {isLoading && <Spin tip='Loading...'/>}
       <NewsList newsList={newsList} />
       {errmsg && <>{errmsg}</>}
-      {isLoading ? <Spin tip='Loading...'/> : (
+      {isLoading ? <Spin tip={`${i18n.t('loading')}...`}/> : (
         <div className='loadmore_btn'>
-          <Button onClick={loadMore}>Load more</Button>
+          <Button onClick={loadMore}>{i18n.t('loadMore')}</Button>
         </div>
       )}
     </div>
