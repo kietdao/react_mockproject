@@ -114,6 +114,14 @@
                 display: block;
             }
         }
+        @include smallTablet {
+            .header_nav {
+                display: none;
+            }
+            .header_nav_list {
+                display: block;
+            }
+        }
         @include mobile {
             .header_nav {
                 display: none;

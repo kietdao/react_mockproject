@@ -14,6 +14,8 @@ export const TRANSLATION_EN = {
     deaths: 'Deaths Cases',
     searchCountry: 'Search Country For Defails',
     enterCountry: 'Enter Country Name Here',
+    enterUsername: 'Enter your username here',
+    enterPassword: 'Please enter your password',
     overview: 'Overview',
     overviewChartOf: 'Overview Chart of',
     overviewChartSubt: 'Overview chart includes Confirmed, Recovered, Deaths cases',
@@ -28,5 +30,18 @@ export const TRANSLATION_EN = {
     password: 'Password',
     dontHaveAcc: `Don't have account`,
     here: 'here',
-    to: 'to'
+    to: 'to',
+    usernameMin: 'Username should be of minimum 6 characters!',
+    usernameMax: 'Username should be of maximum 50 characters!',
+    usernameRequired: 'Username is required!',
+    usernameBeenUsed: 'This username has been used, please choose another username!',
+    passwordMin: 'Password should be of minimum 6 characters!',
+    passwordMax: 'Password should be of maximum 50 characters!',
+    passwordRequired: 'Password is required',
+    registerSuccess: 'Register Success!',
+    loginSuccess: 'Login Success!',
+    inputUsername: 'Please input your username!',
+    inputPassword: 'Please input your password!',
+    usernameNotAvailable: 'Username is not available!',
+    passwordWrong: 'Password is wrong!'
 }

@@ -12,7 +12,7 @@ export default function Login() {
     users.map(user => {
       if(user.username === values.username && user.password === values.password) {
         localStorage.setItem('isLogin', JSON.stringify(true))
-        msgSuccess('Login Success!')
+        msgSuccess()
         setTimeout(() => {
           navigate('/')
         }, 1000)
@@ -21,13 +21,7 @@ export default function Login() {
   };
 
   const msgSuccess = () => {
-    message.success('Login Success!')
-  }
-  const msgError = (field) => {
-    message.error(`${field} is wrong!`)
-  }
-  const onLoginFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
+    message.success(i18n.t('loginSuccess'))
   }
   return (
     <div className='login_page'>
@@ -37,19 +31,16 @@ export default function Login() {
           <Form
             name="basic"
             labelCol={{
-              lg: 3,
-              md: 3,
-              sm: 0,
-              xs: 0,
-            }}
-            wrapperCol={{
-              lg: 22,
-              md: 21,
+              lg: 24,
+              md: 24,
               sm: 24,
               xs: 24,
             }}
-            initialValues={{
-              remember: true,
+            wrapperCol={{
+              lg: 24,
+              md: 24,
+              sm: 24,
+              xs: 24,
             }}
             onFinish={onLogin}
             autoComplete="off"
@@ -60,7 +51,14 @@ export default function Login() {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your username!',
+                  message: i18n.t('inputUsername'),
+                },
+                {
+                  validator: async (_, username) => {
+                    if (username && users.every(user => user.username !== username)) {
+                      return Promise.reject(new Error(i18n.t('usernameNotAvailable')));
+                    }
+                  },
                 },
               ]}
             >
@@ -73,8 +71,15 @@ export default function Login() {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your password!',
+                  message: i18n.t('inputPassword'),
                 },
+                ({ getFieldValue }) => ({
+                  validator: async (_, password) => {
+                    if(password && users.find(user => user.username === getFieldValue('username')).password !== password) {
+                      return Promise.reject(new Error(i18n.t('passwordWrong')));
+                    }
+                  },
+                })
               ]}
             >
               <Input.Password />
@@ -85,7 +90,7 @@ export default function Login() {
                   lg: 24,
                 }}
               >
-                <span className='login_registerlink'>Don't have account? <Link to='/register'>Click here</Link> to register</span>
+                <span className='login_registerlink'>{i18n.t('dontHaveAcc')}? <Link to='/register'>Click {i18n.t('here')}</Link> {i18n.t('to')} {i18n.t('register')}</span>
               </Form.Item>
               <Form.Item
                 wrapperCol={{

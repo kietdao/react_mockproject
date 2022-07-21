@@ -9,7 +9,7 @@
         .form_register {
             border: 1px solid #ccc;
             padding: 16px;
-            width: 30%;
+            width: 40%;
             margin: 0 auto;
             background-color: #2b2111;
             h2 {
@@ -51,6 +51,11 @@
         @include tablet {
             .form_register {
                 width: 50%;
+            }
+        }
+        @include smallTablet {
+            .form_register {
+                width: 60%;
             }
         }
         @include mobile {
