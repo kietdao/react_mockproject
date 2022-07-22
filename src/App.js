@@ -12,7 +12,7 @@ import { setCountrylist, setAllData, setChartData } from './features/countries/c
 import AuthRoute from './components/authroute'
 import PrivateRoute from './components/privateroute'
 import { Spin } from 'antd';
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.min.css'
 import './App.scss';
 localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
 function App() {

@@ -7,6 +7,7 @@ import PieChart from '../../components/piechart'
 import CountrySearch from '../../components/countrysearch'
 import WorldMap from '../../components/worldmap'
 import axios from 'axios'
+import i18n from 'i18next'
 
 export default function DetailCountry() {
   const { iso3 } = useParams()
@@ -46,15 +47,15 @@ export default function DetailCountry() {
               <CountrySearch />
               <OverView data={countryData}/>
               <div className='pie_chart'>
-                <h2>Chart Of Rates</h2>
+                <h2>{i18n.t('chartOfRate')}</h2>
                 <Row gutter={8}>
-                  <Col lg={8} sm={24} xs={24}>
+                  <Col lg={8} md={8} sm={24} xs={24}>
                     <PieChart confirmed={countryData?.casesPerOneMillion}/>
                   </Col>
-                  <Col lg={8} sm={24} xs={24}>
+                  <Col lg={8} md={8} sm={24} xs={24}>
                     <PieChart recovered={countryData?.recoveredPerOneMillion}/>
                   </Col>
-                  <Col lg={8} sm={24} xs={24}>
+                  <Col lg={8} md={8} sm={24} xs={24}>
                     <PieChart deaths={countryData?.deathsPerOneMillion}/>
                   </Col>
                 </Row>

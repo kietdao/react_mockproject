@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import i18n from "i18next";
 import { useNavigate } from 'react-router';
 import { Switch, Button, Dropdown, Menu, Space } from 'antd';
-import { ConsoleSqlOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { UnorderedListOutlined } from '@ant-design/icons';
 import "../../translations/i18n";
 import { WiDaySunny, WiLightning} from "react-icons/wi";
 import logo from './image/logo.png'

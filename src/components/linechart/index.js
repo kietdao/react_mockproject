@@ -74,7 +74,7 @@ export default function DataChart(props) {
     },
     yAxis: {
       title: {
-        text: "Numbers of Cases"
+        text: i18n.t('numberOfCases')
       },
     },
     xAxis: {

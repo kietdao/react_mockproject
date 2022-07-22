@@ -22,6 +22,11 @@ $desktop-width: 1024px;
  } 
 }  
 
+@mixin largeTablet { @media (min-width: #{$desktop-width}) and (max-width: 1180px) {       
+  @content;   
+} 
+}  
+
 @mixin desktop {   @media (min-width: #{$desktop-width}) {     
   @content;  
  } 

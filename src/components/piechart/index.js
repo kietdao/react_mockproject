@@ -14,6 +14,7 @@ export default function PieChart(props) {
           spacingLeft: 0,
           spacingRight: 0,
           spacingTop: 0,
+          height: 400
         },
         title: {
           text: title,
@@ -23,12 +24,12 @@ export default function PieChart(props) {
           style: {
             display: 'flex',
             fontWeight: 500,
-            fontSize: 12,
+            fontSize: 16,
             alignItems: 'center'
           }
         },
         subtitle: {
-          text: `${cases} Per Million`,
+          text: `${cases} ${i18n.t('perMillion')}`,
           align: "center",
           verticalAlign: "middle",
           y: 0
@@ -49,7 +50,7 @@ export default function PieChart(props) {
             allowPointSelect: false,
             cursor: "pointer",
             dataLabels: {
-              enabled: true
+              enabled: false
             },
             showInLegend: false,
             borderWidth: 0,
@@ -59,7 +60,7 @@ export default function PieChart(props) {
         series: [
             {
                 name: i18n.t('rate'),  
-                innerSize: "75%",
+                innerSize: "80%",
                 data: [
                 {
                     name: `${i18n.t('rate')} ${title}`,
