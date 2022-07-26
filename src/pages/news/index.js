@@ -26,19 +26,22 @@ export default function News() {
     getNewsList()
   }, [page])
   const loadMore = () => {
-    setPage(page + 1)
+    if(page < 7) {
+      setPage(page + 1)
+    }
   }
+  window.addEventListener('scroll', () => {
+    if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
+      loadMore()
+    }
+  })
   return (
     <div className='news_section'>
       <h2>{i18n.t('newsPageTitle')}</h2>
       {isLoading && <Spin tip='Loading...'/>}
       <NewsList newsList={newsList} />
       {errmsg && <>{errmsg}</>}
-      {isLoading ? <Spin tip={`${i18n.t('loading')}...`}/> : (
-        <div className='loadmore_btn'>
-          <Button onClick={loadMore}>{i18n.t('loadMore')}</Button>
-        </div>
-      )}
+      {isLoading && <Spin tip={`${i18n.t('loading')}...`}/>}
     </div>
   )
 }
