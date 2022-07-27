@@ -63,7 +63,7 @@ export default function DetailCountry() {
             </Col>
             <Col lg={12} sm={24} xs={24}>
               <DataChart data={historicalData}/>
-              <WorldMap />
+              <WorldMap iso3={iso3}/>
             </Col>
         </Row>
       </div>  

@@ -1,3 +1,4 @@
+import { useState, useMemo } from 'react'
 import { useSelector } from 'react-redux';
 import Highcharts from 'highcharts'
 import HighchartsMap from "highcharts/modules/map";
@@ -5,15 +6,30 @@ import HighchartsReact from 'highcharts-react-official'
 import map from "@highcharts/map-collection/custom/world.geo.json";
 import i18n from 'i18next'
 HighchartsMap(Highcharts);
-export default function WorldMap() {
+export default function WorldMap(props) {
+  const [confirmedVisible, setConfirmedVisible] = useState(true)
+  const [recoveredVisible, setRecoveredVisible] = useState(true)
+  const [deathsVisible, setDeathsVisible] = useState(true)
   const data = useSelector(state => state.countries?.countryList)
+  let resultData
+  if(props?.iso3) {
+    resultData = data?.filter(country => {
+      return country.iso3 === props?.iso3
+    })
+  }
+  console.log(resultData)
+  const setDefaultVisibleLine = useMemo(() => {
+    if(confirmedVisible === false && recoveredVisible === false && deathsVisible === false) {
+      setRecoveredVisible(true)
+    }
+  }, [confirmedVisible, recoveredVisible, deathsVisible])
   const options = {
     chart: {
       borderWidth: 1,
-      height: 500
+      height: 500,
     },
     title: {
-      text: i18n.t('mapChart')
+      text: `${i18n.t('mapChart')} ${resultData ? resultData[0].countryName : i18n.t('world')}`
     },
     subtitle: {
       text: i18n.t('mapChartSubt')
@@ -32,52 +48,75 @@ export default function WorldMap() {
         states: {
           hover: {
             color: 'yellow'
+          },
+          select: {
+            color: 'yellow',
+            dashStyle: 'dot'
+          }
+        }
+      },
+      series: {
+        allowPointSelect: true,
+        events: {
+          legendItemClick: function() {
+            setDefaultVisibleLine()
           }
         }
       }
     },
     series: [
       {
-        type: "map",
-        mapData: map,
-        name: i18n.t('mapChart'),
-        color: '#ccc',
-      }
-      ,
-      {
-        type: "map",
-        name: i18n.t('deaths'),
-        color: '#71809b',
-        data: data,
-        mapData: map,
-        showInLegend: true,
-        joinBy: ['iso-a3','iso3'],
-        tooltip: {
-          pointFormat: `{point.properties.name}: {point.deaths} people`
-        }
-      },
-      {
-        type: "map",
         name: i18n.t('recovered'),
         color: '#38a16e',
-        data: data,
+        data: resultData ? resultData : data,
         mapData: map,
+        allAreas: resultData ? false : true,
         showInLegend: true,
         joinBy: ['iso-a3','iso3'],
         tooltip: {
           pointFormat: `{point.properties.name}: {point.recovered} people`
+        },
+        visible: recoveredVisible,
+        events: {
+          legendItemClick: function() {
+            this.visible ? setRecoveredVisible(false) : setRecoveredVisible(true)
+          }
         }
       },
       {
-        type: "map",
         name: i18n.t('confirmed'),
         color: '#e53e33',
-        data: data,
+        data: resultData ? resultData : data,
         mapData: map,
+        allAreas: resultData ? false : true,
         showInLegend: true,
         joinBy: ['iso-a3','iso3'],
         tooltip: {
           pointFormat: `{point.properties.name}: {point.confirmed} people`
+        },
+        visible: confirmedVisible,
+        events: {
+          legendItemClick: function() {
+            this.visible ? setConfirmedVisible(false) : setConfirmedVisible(true)
+          }
+        }
+      },
+      {
+        name: i18n.t('deaths'),
+        color: '#71809b',
+        data: resultData ? resultData : data,
+        mapData: map,
+        allAreas: resultData ? false : true,
+        showInLegend: true,
+        joinBy: ['iso-a3','iso3'],
+        tooltip: {
+          pointFormat: `{point.properties.name}: {point.deaths} people`
+        },
+        visible: deathsVisible,
+        events: {
+          legendItemClick: function() {
+            this.visible ? setDeathsVisible(false) : setDeathsVisible(true)
+          }
         }
       }
     ],
