@@ -17,7 +17,6 @@ export default function WorldMap(props) {
       return country.iso3 === props?.iso3
     })
   }
-  console.log(resultData)
   const setDefaultVisibleLine = useMemo(() => {
     if(confirmedVisible === false && recoveredVisible === false && deathsVisible === false) {
       setRecoveredVisible(true)

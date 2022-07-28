@@ -24,6 +24,24 @@
                     }
                 }
             }
+            span.ant-input-affix-wrapper.ant-input-password {
+                background-color: #fff;
+                color: #2b2111;
+                span.ant-input-suffix {
+                    background-color: #fff;
+                    * {
+                        background-color: #fff;
+                        color: #2b2111;
+                    }
+                }
+            }
+            input {
+                background-color: #fff;
+                color: #2b2111
+            }
+            .ant-form-item-explain-error {
+                color: red;
+            }
             .login_actions {
                 display: flex;
                 justify-content: space-between;

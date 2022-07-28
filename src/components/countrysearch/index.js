@@ -28,7 +28,7 @@ export default function CountrySearch() {
     return renderItem(option.flag, option.countryName, option.id, option.iso3)
   }))
   const searchResult = (inputSearch) => {
-    let inputFormatted = inputSearch?.charAt(0).toUpperCase() + inputSearch?.slice(1)
+    let inputFormatted = inputSearch?.charAt(0).toUpperCase() + inputSearch?.slice(1) 
     const result = data && data.filter(item => {
       return item?.countryName.includes(inputFormatted)
     })

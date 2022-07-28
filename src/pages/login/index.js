@@ -9,7 +9,7 @@ export default function Login() {
   const users = JSON.parse(localStorage.getItem('users'))
   const navigate = useNavigate()
   const onLogin = (values) => {
-    users.map(user => {
+    users.forEach(user => {
       if(user.username === values.username && user.password === values.password) {
         localStorage.setItem('isLogin', JSON.stringify(true))
         msgSuccess()
