@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import Highcharts from "highcharts";
 import HighchartsReact from 'highcharts-react-official'
 import { useSelector } from 'react-redux';
