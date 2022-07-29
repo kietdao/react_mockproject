@@ -15,6 +15,7 @@ import { Spin } from 'antd';
 import 'antd/dist/antd.min.css'
 import './App.scss';
 localStorage.setItem('users', JSON.stringify([{username: 'admin', password: 'admin'}]))
+localStorage.setItem('isLogin', JSON.stringify(false))
 function App() {
   const [theme, setTheme] = useState('light')
   const [language, setLanguage] = useState('en')
