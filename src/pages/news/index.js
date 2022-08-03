@@ -38,7 +38,7 @@ export default function News() {
   return (
     <div className='news_section'>
       <h2>{i18n.t('newsPageTitle')}</h2>
-      {isLoading && <Spin tip='Loading...'/>}
+      {isLoading && <Spin tip={`${i18n.t('loading')}...`}/>}
       <NewsList newsList={newsList} />
       {errmsg && <>{errmsg}</>}
       {isLoading && <Spin tip={`${i18n.t('loading')}...`}/>}

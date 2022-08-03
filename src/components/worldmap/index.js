@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useCallback } from 'react'
 import { useSelector } from 'react-redux';
 import Highcharts from 'highcharts'
 import HighchartsMap from "highcharts/modules/map";
@@ -14,12 +14,6 @@ export default function WorldMap(props) {
   useEffect(() => {
     setDefaultVisibleMap()
   }, [confirmedVisible, recoveredVisible, deathsVisible])
-  let resultData
-  if(props?.iso3) {
-    resultData = data?.filter(country => {
-      return country.iso3 === props?.iso3
-    })
-  }
   const dataToFormat = JSON.parse(JSON.stringify(data))
   const recoveredCases = dataToFormat.map(item => {
       return [item?.iso2?.toLowerCase(), item?.recovered]
@@ -42,7 +36,7 @@ export default function WorldMap(props) {
         height: 500,
       },
       title: {
-        text: `${i18n.t('mapChart')} ${resultData ? resultData[0].countryName : i18n.t('world')}`
+        text: `${i18n.t('mapChart')} ${i18n.t('world')}`
       },
       subtitle: {
         text: i18n.t('mapChartSubt')
