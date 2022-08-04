@@ -31,7 +31,7 @@ export default function News() {
     }
   }
   window.addEventListener('scroll', () => {
-    if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
+    if (window.innerHeight + window.scrollY === document.scrollingElement.scrollHeight) {
       loadMore()
     }
   })
