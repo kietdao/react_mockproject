@@ -1,14 +1,12 @@
 import React from 'react'
 import { Col, Row } from 'antd';
-import i18n from "i18next";
 import CountryList from '../../components/countrylist'
 import OverView from '../../components/overview'
 import DataChart from '../../components/linechart'
 import WorldMap from '../../components/worldmap'
 import CountrySearch from '../../components/countrysearch'
 
-export default function Home(props) {
-  i18n.changeLanguage(props.language)
+export default function Home() {
   return (
     <div className='home_page'>
       <div className='home_container'>

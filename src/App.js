@@ -89,7 +89,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={
           <PrivateRoute>
-            <Home language={language}/>
+            <Home />
           </PrivateRoute>
         }/>
         <Route exact path='countries/:iso3' element={

@@ -41,6 +41,15 @@
                 padding: 0 15px;
                 a {
                     color: #d89614;
+                    display: flex;
+                    align-items: center;
+                    span {
+                        margin-right: 3px;
+                        font-size: 14px;
+                        * {
+                            color: #d89614;
+                        }
+                    }
                 }
                 .ant-switch {
                     box-shadow: 1px 1px 10px #d89614;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import i18n from "i18next";
 import { useNavigate } from 'react-router';
 import { Switch, Button, Dropdown, Menu, Space } from 'antd';
-import { UnorderedListOutlined } from '@ant-design/icons';
+import { UnorderedListOutlined, HomeOutlined, AppstoreOutlined, UserOutlined, UserAddOutlined} from '@ant-design/icons';
 import "../../translations/i18n";
 import { WiDaySunny, WiLightning} from "react-icons/wi";
 import logo from './image/logo.png'
@@ -31,13 +31,19 @@ export default function Header(props) {
         {
           key: 'home',
           label: (
-            <Link to='/'>{i18n.t('home')}</Link>
+            <Link to='/'>
+              <HomeOutlined />
+              {i18n.t('home')}
+            </Link>
           ),
         },
         {
           key: 'news',
           label: (
-            <Link to='/news'>{i18n.t('news')}</Link>
+            <Link to='/news'>
+              <AppstoreOutlined />
+              {i18n.t('news')}
+            </Link>
           ),
         },
         {
@@ -45,7 +51,10 @@ export default function Header(props) {
           label: (
             JSON.parse(localStorage.getItem('isLogin')) === false ? (
               <>
-                <Link to='/login'>{i18n.t('login')}</Link>
+                <Link to='/login'>
+                  <UserOutlined />
+                  {i18n.t('login')}
+                </Link>
               </>
             ) : (
               <a onClick={onLogout}>{i18n.t('logout')}</a>
@@ -57,7 +66,10 @@ export default function Header(props) {
           label: (
             JSON.parse(localStorage.getItem('isLogin')) === false && (
               <>
-                <Link to='/register'>{i18n.t('register')}</Link>
+                <Link to='/register'>
+                  <UserAddOutlined />
+                  {i18n.t('register')}
+                </Link>
               </>
             ) 
           ),
@@ -102,18 +114,30 @@ export default function Header(props) {
         </Link>
         <ul className='header_nav'>
           <li className='header_nav_item'>
-            <Link to='/'>{i18n.t('home')}</Link>
+            <Link to='/'>
+              <HomeOutlined />
+              {i18n.t('home')}
+            </Link>
           </li>
           <li className='header_nav_item'>
-            <Link to='/news'>{i18n.t('news')}</Link>
+            <Link to='/news'>
+              <AppstoreOutlined />
+              {i18n.t('news')}
+            </Link>
           </li>
           {JSON.parse(localStorage.getItem('isLogin')) === false ? (
             <>
               <li className='header_nav_item'>
-                <Link to='/login'>{i18n.t('login')}</Link>
+                <Link to='/login'>
+                  <UserOutlined />
+                  {i18n.t('login')}
+                </Link>
               </li>
               <li className='header_nav_item'>
-                <Link to='/register'>{i18n.t('register')}</Link>
+                <Link to='/register'>
+                  <UserAddOutlined />
+                  {i18n.t('register')}
+                </Link>
               </li>
             </>
           ) : (
