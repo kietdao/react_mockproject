@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react_mockproject/static/css/main.f3e18203.css",
+    "main.js": "/react_mockproject/static/js/main.abf6f929.js",
+    "static/js/787.109e24bb.chunk.js": "/react_mockproject/static/js/787.109e24bb.chunk.js",
+    "static/media/logo.png": "/react_mockproject/static/media/logo.54d91c385e5f0ee6c322.png",
+    "index.html": "/react_mockproject/index.html",
+    "main.f3e18203.css.map": "/react_mockproject/static/css/main.f3e18203.css.map",
+    "main.abf6f929.js.map": "/react_mockproject/static/js/main.abf6f929.js.map",
+    "787.109e24bb.chunk.js.map": "/react_mockproject/static/js/787.109e24bb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f3e18203.css",
+    "static/js/main.abf6f929.js"
+  ]
+}
